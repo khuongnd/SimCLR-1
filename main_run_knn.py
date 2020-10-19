@@ -155,12 +155,12 @@ batch_size, epochs = 512, 500
 
 # data prepare
 train_data = CIFAR10Pair(root='data', train=True, transform=train_transform, download=True)
-train_loader = DataLoader(train_data, batch_size=batch_size, shuffle=True, num_workers=16, pin_memory=True,
+train_loader = DataLoader(train_data, batch_size=batch_size, shuffle=True, num_workers=2, pin_memory=True,
                           drop_last=True)
 memory_data = CIFAR10Pair(root='data', train=True, transform=test_transform, download=True)
-memory_loader = DataLoader(memory_data, batch_size=batch_size, shuffle=False, num_workers=16, pin_memory=True)
+memory_loader = DataLoader(memory_data, batch_size=batch_size, shuffle=False, num_workers=2, pin_memory=True)
 test_data = CIFAR10Pair(root='data', train=False, transform=test_transform, download=True)
-test_loader = DataLoader(test_data, batch_size=batch_size, shuffle=False, num_workers=16, pin_memory=True)
+test_loader = DataLoader(test_data, batch_size=batch_size, shuffle=False, num_workers=2, pin_memory=True)
 
 # model setup and optimizer config
 model = Model(feature_dim).cuda()
